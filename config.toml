@@ -1,0 +1,5 @@
+baseURL = 'http://davewang.top/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+# theme = "ananke"
+theme = "paperMod"
