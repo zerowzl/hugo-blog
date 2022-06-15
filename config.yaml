@@ -14,7 +14,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-paginate: 10    # 首页每页显示的文章数
+paginate: 5    # 首页每页显示的文章数
 
 minify:
     disableXML: true
@@ -41,4 +41,4 @@ params:
   homeInfoParams:
     Title: "Zhiliang's Website"
     Content: >
-        欢迎来到我的主页。我会在这里分享 IT 技术文章，个人经验分享。欢迎订阅。
+        欢迎来到我的主页。我会在这里分享 IT 技术文章，个人经验。欢迎订阅~
