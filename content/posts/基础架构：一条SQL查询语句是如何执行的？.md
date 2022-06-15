@@ -7,7 +7,7 @@ tag: MySQL
 
 
 ### MySQL 包含哪些组件？分别有什么作用？
-![MySQl架构图](http://localhost:1313/images/jiagou.png)
+![MySQl架构图](http://www.zerowzl.com/images/jiagou.png)
 
 大体来说，MySQL可以分为server层和存储引擎层。
 
@@ -29,7 +29,7 @@ mysql -h$ip -P$port -u$user -p
 
 连接成功后如果后续的动作，这个连接就处于空闲状态。你可以通过show processlist 命令查看。其中Command显示为Sleep表示当前有个空闲连接。
 
-![processList](http://localhost:1313/images/processlist.jpg)
+![processList](http://www.zerowzl.com/images/processlist.jpg)
 
 
 

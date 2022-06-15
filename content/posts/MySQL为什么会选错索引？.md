@@ -22,7 +22,7 @@ MySQL在真正执行语句前并不能精确地知道满足条件的记录有多
 
 可以通过show index查看
 
-![索引信息](http://localhost:1313/images/mysql/1548215763951.jpg)
+![索引信息](http://www.zerowzl.com/images/mysql/1548215763951.jpg)
 
 MySQL获取这个基数采用的方式为**采样统计**，虽然将整张表取出来一行一行统计可以得到精确地结果，但是代价太高。
 
@@ -58,9 +58,9 @@ mysql> select * from t4 where (a between 1 and 1000)  and (b between 50000 and 1
 mysql> explain select * from t4 where (a between 1 and 1000)  and (b between 50000 and 100000) order by b limit 1;
 ```
 
-![索引b执行计划](http://localhost:1313/images/mysql/1548224453485.jpg)
+![索引b执行计划](http://www.zerowzl.com/images/mysql/1548224453485.jpg)
 
-![索引a执行计划](http://localhost:1313/note/images/mysql/1548227069037.jpg)
+![索引a执行计划](http://www.zerowzl.com/note/images/mysql/1548227069037.jpg)
 
 我们可以看到返回的key代表MySQL选择了索引b，rows显示扫描行数是50128。强制是用索引a的话扫描行数是1000。
 
@@ -89,7 +89,7 @@ mysql> explain select * from t4 where (a between 1 and 1000)  and (b between 500
 
 按照b,a排序，意味着两个索引都需要排序，这时候扫描行数成了影响决策的主要条件，于是优化器选择了只扫描1000行的索引a。
 
-![修改后的语句的执行计划](http://localhost:1313/images/mysql/1548227626900.jpg)
+![修改后的语句的执行计划](http://www.zerowzl.com/images/mysql/1548227626900.jpg)
 
 当然这样修改的方案不具有通用性，因为语句中刚好有limit 1，如果有满足条件的数据，order by b,a limit1 和order by b limit 1 都会返回b是中小的那一行。
 
@@ -99,7 +99,7 @@ mysql> explain select * from t4 where (a between 1 and 1000)  and (b between 500
 mysql> select * from  (select * from t4 where (a between 1 and 1000)  and (b between 50000 and 100000) order by b limit 100)alias limit 1;
 ```
 
-![limit100的执行计划](http://localhost:1313/images/mysql/1548228114275.jpg)
+![limit100的执行计划](http://www.zerowzl.com/images/mysql/1548228114275.jpg)
 
 这里的加的limit100让优化器意识到使用索引b的代价是很大的（通过外围的limit1保证了逻辑正确），其实是我们根据数据特征诱导了一下优化器，也不具有通用性。
 
@@ -119,4 +119,4 @@ delete语句删除了所有的数据，然后再通过存储过程插入了10万
 
 为什么主键不会这样呢？是因为主键是直接按照行数来估计的。而表的行数，优化器直接使用的是show table status的值。
 
-![show table status](http://localhost:1313/images/mysql/1548230153557.jpg)
+![show table status](http://www.zerowzl.com/images/mysql/1548230153557.jpg)
