@@ -1,5 +1,5 @@
 baseURL: http://zerowzl.com/
-title: Zhiliang's Website
+title: 个人技术文章
 languageCode: zh-cn # en-us
 theme: paperMod
 
@@ -39,6 +39,6 @@ menu:
 
 params:
   homeInfoParams:
-    Title: "Zhiliang's Website"
+    Title: "个人技术文章"
     Content: >
         欢迎来到我的主页。我会在这里分享 IT 技术文章，个人经验。欢迎订阅~
